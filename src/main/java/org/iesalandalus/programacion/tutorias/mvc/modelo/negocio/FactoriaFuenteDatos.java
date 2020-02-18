@@ -9,6 +9,6 @@ public enum FactoriaFuenteDatos {
 			return new FactoriaFuenteDatosMemoria();
 		}
 	};
-	
+
 	public abstract IFuenteDatos crear();
 }
