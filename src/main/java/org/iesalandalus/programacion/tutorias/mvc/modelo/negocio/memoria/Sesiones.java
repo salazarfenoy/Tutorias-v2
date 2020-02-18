@@ -9,8 +9,9 @@ import javax.naming.OperationNotSupportedException;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Sesion;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ISesiones;
 
-public class Sesiones {
+public class Sesiones implements ISesiones {
 
 	private List<Sesion> coleccionSesiones;
 
@@ -20,6 +21,7 @@ public class Sesiones {
 
 	}
 
+	@Override
 	public int getTamano() {
 		return coleccionSesiones.size();
 	}
@@ -35,6 +37,7 @@ public class Sesiones {
 
 	}
 
+	@Override
 	public void insertar(Sesion sesion) throws OperationNotSupportedException {
 		if (sesion == null) {
 			throw new NullPointerException("ERROR: No se puede insertar una sesión nula.");
@@ -50,6 +53,7 @@ public class Sesiones {
 
 	}
 
+	@Override
 	public Sesion buscar(Sesion sesion) {
 		if (sesion == null) {
 			throw new IllegalArgumentException("ERROR: No se puede buscar una sesión nula.");
@@ -63,6 +67,7 @@ public class Sesiones {
 
 	}
 
+	@Override
 	public void borrar(Sesion sesion) throws OperationNotSupportedException {
 		if (sesion == null) {
 			throw new IllegalArgumentException("ERROR: No se puede borrar una sesión nula.");
@@ -77,6 +82,7 @@ public class Sesiones {
 
 	}
 
+	@Override
 	public List<Sesion> get(Tutoria tutoria) {
 		if (tutoria == null) {
 			throw new NullPointerException("ERROR: La tutoría no puede ser nula.");
@@ -94,6 +100,7 @@ public class Sesiones {
 
 	}
 
+	@Override
 	public List<Sesion> get() {
 		List<Sesion> sesionesOrdenadas = copiaProfundaSesiones();
 		Comparator<Profesor> comparadorProfesor = Comparator.comparing(Profesor::getDni);
