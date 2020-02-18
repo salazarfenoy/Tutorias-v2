@@ -2,8 +2,7 @@ package org.iesalandalus.programacion.tutorias.mvc.vista.texto;
 
 import javax.naming.OperationNotSupportedException;
 
-
-import org.iesalandalus.programacion.tutorias.mvc.controlador.Controlador;
+import org.iesalandalus.programacion.tutorias.mvc.controlador.IControlador;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Alumno;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Cita;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
@@ -15,14 +14,14 @@ import java.util.List;
 
 public class VistaTexto implements IVista {
 
-	private Controlador controlador;
+	private IControlador controlador;
 
 	public VistaTexto() {
 		Opcion.setVista(this);
 	}
 
 	@Override
-	public void setControlador(Controlador controlador) {
+	public void setControlador(IControlador controlador) {
 		this.controlador = controlador;
 	}
 
