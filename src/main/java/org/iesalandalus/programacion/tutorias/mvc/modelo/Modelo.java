@@ -11,16 +11,13 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Sesion;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.IAlumnos;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ICitas;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.IFuenteDatos;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.IProfesores;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ISesiones;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ITutorias;
-import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.memoria.Alumnos;
-import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.memoria.Citas;
-import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.memoria.Profesores;
-import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.memoria.Sesiones;
-import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.memoria.Tutorias;
 
-public class Modelo {
+
+public class Modelo implements IModelo {
 
 
 	private IAlumnos alumnos;
@@ -29,27 +26,30 @@ public class Modelo {
 	private ISesiones sesiones;
 	private ICitas citas;
 
-	public Modelo() {
-		alumnos = new Alumnos();
-		profesores = new Profesores();
-		tutorias = new Tutorias();
-		sesiones = new Sesiones();
-		citas = new Citas();
+	public Modelo(IFuenteDatos fuenteDatos) {
+		alumnos = fuenteDatos.crearAlumnos();
+		profesores = fuenteDatos.crearProfesores();
+		tutorias = fuenteDatos.crearTutorias();
+		sesiones = fuenteDatos.crearSesiones();
+		citas = fuenteDatos.crearCitas();
 
 	}
 
+	@Override
 	public void insertar(Alumno alumno) throws OperationNotSupportedException {
 
 		alumnos.insertar(alumno);
 
 	}
 
+	@Override
 	public void insertar(Profesor profesor) throws OperationNotSupportedException {
 
 		profesores.insertar(profesor);
 
 	}
 
+	@Override
 	public void insertar(Tutoria tutoria) throws OperationNotSupportedException {
 
 		if (tutoria == null) {
@@ -66,6 +66,7 @@ public class Modelo {
 
 	}
 
+	@Override
 	public void insertar(Sesion sesion) throws OperationNotSupportedException {
 		if (sesion == null) {
 			throw new NullPointerException("ERROR: No se puede insertar una sesión nula.");
@@ -80,6 +81,7 @@ public class Modelo {
 
 	}
 
+	@Override
 	public void insertar(Cita cita) throws OperationNotSupportedException {
 
 		if (cita == null) {
@@ -100,27 +102,33 @@ public class Modelo {
 
 	}
 
+	@Override
 	public Alumno buscar(Alumno alumno) {
 		return alumnos.buscar(alumno);
 
 	}
 
+	@Override
 	public Profesor buscar(Profesor profesor) {
 		return profesores.buscar(profesor);
 	}
 
+	@Override
 	public Tutoria buscar(Tutoria tutoria) {
 		return tutorias.buscar(tutoria);
 	}
 
+	@Override
 	public Sesion buscar(Sesion sesion) {
 		return sesiones.buscar(sesion);
 	}
 
+	@Override
 	public Cita buscar(Cita cita) {
 		return citas.buscar(cita);
 	}
 
+	@Override
 	public void borrar(Alumno alumno) throws OperationNotSupportedException {
 		List<Cita> citasAlumno = citas.get(alumno);
 		for (Cita cita: citasAlumno) {
@@ -130,6 +138,7 @@ public class Modelo {
 
 	}
 
+	@Override
 	public void borrar(Profesor profesor) throws OperationNotSupportedException {
 		List<Tutoria> tutoriasProfesor = tutorias.get(profesor);
 		for (Tutoria tutoria: tutoriasProfesor) {
@@ -139,6 +148,7 @@ public class Modelo {
 
 	}
 
+	@Override
 	public void borrar(Tutoria tutoria) throws OperationNotSupportedException {
 		List<Sesion> sesionesTutoria = sesiones.get(tutoria);
 		for (Sesion sesion: sesionesTutoria) {
@@ -147,6 +157,7 @@ public class Modelo {
 		tutorias.borrar(tutoria);
 	}
 
+	@Override
 	public void borrar(Sesion sesion) throws OperationNotSupportedException {
 		List<Cita> citasSesion = citas.get(sesion);
 		for (Cita cita: citasSesion) {
@@ -156,45 +167,55 @@ public class Modelo {
 
 	}
 
+	@Override
 	public void borrar(Cita cita) throws OperationNotSupportedException {
 
 		citas.borrar(cita);
 
 	}
 
+	@Override
 	public List<Alumno> getAlumnos() {
 		return alumnos.get();
 
 	}
 
+	@Override
 	public List<Profesor> getProfesores() {
 		return profesores.get();
 	}
 
+	@Override
 	public List<Tutoria> getTutorias() {
 		return tutorias.get();
 	}
 
+	@Override
 	public List<Tutoria> getTutorias(Profesor profesor) {
 		return tutorias.get(profesor);
 	}
 
+	@Override
 	public List<Sesion> getSesiones() {
 		return sesiones.get();
 	}
 
+	@Override
 	public List<Sesion> getSesiones(Tutoria tutoria) {
 		return sesiones.get(tutoria);
 	}
 
+	@Override
 	public List<Cita> getCitas() {
 		return citas.get();
 	}
 
+	@Override
 	public List<Cita> getCitas(Sesion sesion) {
 		return citas.get(sesion);
 	}
 
+	@Override
 	public List<Cita> getCitas(Alumno alumno) {
 		return citas.get(alumno);
 	}
