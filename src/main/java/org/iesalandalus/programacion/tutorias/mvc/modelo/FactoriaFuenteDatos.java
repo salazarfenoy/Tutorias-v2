@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tutorias.mvc.modelo.negocio;
+package org.iesalandalus.programacion.tutorias.mvc.modelo;
 
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.memoria.FactoriaFuenteDatosMemoria;
 
