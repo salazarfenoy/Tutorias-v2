@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tutorias.mvc.vista;
+package org.iesalandalus.programacion.tutorias.mvc.vista.texto;
 
 public enum Opcion {
 	INSERTAR_ALUMNO("Insertar alumno") {
@@ -128,7 +128,7 @@ public enum Opcion {
 	};
 
 	private String mensaje;
-	private static Vista vista;
+	private static VistaTexto vista;
 
 	private Opcion(String mensaje) {
 		this.mensaje = mensaje;
@@ -136,7 +136,7 @@ public enum Opcion {
 
 	public abstract void ejecutar();
 
-	protected static void setVista(Vista vista) {
+	protected static void setVista(VistaTexto vista) {
 		Opcion.vista = vista;
 	}
 

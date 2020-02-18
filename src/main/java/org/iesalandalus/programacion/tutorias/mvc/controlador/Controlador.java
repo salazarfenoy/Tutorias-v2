@@ -11,14 +11,14 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Cita;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Sesion;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
-import org.iesalandalus.programacion.tutorias.mvc.vista.Vista;
+import org.iesalandalus.programacion.tutorias.mvc.vista.IVista;
 
 public class Controlador {
 
-	private Vista vista;
+	private IVista vista;
 	private IModelo modelo;
 
-	public Controlador(IModelo modelo, Vista vista) {
+	public Controlador(IModelo modelo, IVista vista) {
 		if (modelo == null) {
 			throw new IllegalArgumentException("ERROR: El modelo no puede ser nulo.");
 		}
