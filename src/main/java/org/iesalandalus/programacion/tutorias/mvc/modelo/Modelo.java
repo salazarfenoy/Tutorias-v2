@@ -11,6 +11,7 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Sesion;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.IAlumnos;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.IProfesores;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ITutorias;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.memoria.Alumnos;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.memoria.Citas;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.memoria.Profesores;
@@ -22,7 +23,7 @@ public class Modelo {
 
 	private IAlumnos alumnos;
 	private IProfesores profesores;
-	private Tutorias tutorias;
+	private ITutorias tutorias;
 	private Sesiones sesiones;
 	private Citas citas;
 

@@ -8,8 +8,9 @@ import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ITutorias;
 
-public class Tutorias {
+public class Tutorias implements ITutorias {
 
 	private List<Tutoria> coleccionTutorias;
 
@@ -19,6 +20,7 @@ public class Tutorias {
 
 	}
 
+	@Override
 	public int getTamano() {
 		return coleccionTutorias.size();
 	}
@@ -34,6 +36,7 @@ public class Tutorias {
 
 	}
 
+	@Override
 	public void insertar(Tutoria tutoria) throws OperationNotSupportedException {
 		if (tutoria == null) {
 			throw new NullPointerException("ERROR: No se puede insertar una tutoría nula.");
@@ -50,6 +53,7 @@ public class Tutorias {
 
 	}
 
+	@Override
 	public Tutoria buscar(Tutoria tutoria) {
 		if (tutoria == null) {
 			throw new IllegalArgumentException("ERROR: No se puede buscar una tutoría nula.");
@@ -64,6 +68,7 @@ public class Tutorias {
 
 	}
 
+	@Override
 	public void borrar(Tutoria tutoria) throws OperationNotSupportedException {
 		if (tutoria == null) {
 			throw new IllegalArgumentException("ERROR: No se puede borrar una tutoría nula.");
@@ -78,6 +83,7 @@ public class Tutorias {
 
 	}
 
+	@Override
 	public List<Tutoria> get(Profesor profesor) {
 
 		if (profesor == null) {
@@ -96,6 +102,7 @@ public class Tutorias {
 
 	}
 
+	@Override
 	public List<Tutoria> get() {
 		List<Tutoria> tutoriasOrdenadas = copiaProfundaTutorias();
 		Comparator<Profesor> comparadorProfesor = Comparator.comparing(Profesor::getDni);
