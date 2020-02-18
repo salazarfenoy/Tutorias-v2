@@ -10,6 +10,7 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Sesion;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.IAlumnos;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ICitas;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.IProfesores;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ISesiones;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ITutorias;
@@ -26,7 +27,7 @@ public class Modelo {
 	private IProfesores profesores;
 	private ITutorias tutorias;
 	private ISesiones sesiones;
-	private Citas citas;
+	private ICitas citas;
 
 	public Modelo() {
 		alumnos = new Alumnos();
